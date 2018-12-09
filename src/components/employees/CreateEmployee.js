@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { withRouter } from "react-router";
+import { createEmployee } from '../../store/actions/employeeActions'
 class CreateEmployee extends Component {
     state = {
-        Name: '',
-        Email: '',
-        Department: '',
-        Salary: ''
+        name: '',
+        email: '',
+        department: '',
+        salary: ''
     }
     handleChange = e => {
         this.setState({
@@ -13,8 +17,10 @@ class CreateEmployee extends Component {
     }
     handleSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        // console.log(this.state)
         // TODO store state data in db
+        this.props.createEmployee(this.state)
+        this.props.history.push('/')
     }
     render() {
         return (
@@ -45,4 +51,12 @@ class CreateEmployee extends Component {
         )
     }
 }
-export default CreateEmployee
+const mapDispatchToProps = dispatch => {
+    return {
+        createEmployee: (employee) => dispatch(createEmployee(employee))
+    }
+}
+export default compose(
+    withRouter,
+    connect(null, mapDispatchToProps)
+)(CreateEmployee)
