@@ -4,6 +4,10 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { withRouter } from "react-router";
 import { updateEmployee } from '../../store/actions/employeeActions'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography'
+
 class EditEmployee extends Component {
     employee = this.props.employee
     handleChange = e => {
@@ -17,40 +21,62 @@ class EditEmployee extends Component {
         console.log('current state on submit ', this.state)
         // TODO store state data in db
         this.props.updateEmployee(this.employee)
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
     render() {
         // console.log(this.props)
         if (this.employee) {
             return (
                 <div>
-                    <h5>Update employee</h5>
+                    <br />
+                    <Typography variant="h6" color="inherit">
+                        Update employee
+                    </Typography>
                     <form onSubmit={this.handleSubmit}>
-                        <div>
-                            <label htmlFor="name">Name</label>
-                            <input type="text" id="name" value={this.employee.name} onChange={this.handleChange}></input>
-                        </div>
-                        <div>
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" value={this.employee.email} onChange={this.handleChange}></input>
-                        </div>
-                        <div>
-                            <label htmlFor="department">Department</label>
-                            <input type="text" id="department" value={this.employee.department} onChange={this.handleChange}></input>
-                        </div>
-                        <div>
-                            <label htmlFor="salary">Salary</label>
-                            <input type="number" id="salary" value={this.employee.salary} onChange={this.handleChange} ></input>
-                        </div>
-                        <div>
-                            <button>Update</button>
-                        </div>
+                        <TextField
+                            id="name"
+                            label="Name"
+                            value={this.employee.name}
+                            margin="normal"
+                            onChange={this.handleChange}
+                        />
+                        <br />
+                        <TextField
+                            id="email"
+                            label="Email"
+                            value={this.employee.email}
+                            margin="normal"
+                            onChange={this.handleChange}
+                        />
+                        <br />
+                        <TextField
+                            id="department"
+                            label="Department"
+                            value={this.employee.department}
+                            margin="normal"
+                            onChange={this.handleChange}
+                        />
+                        <br />
+                        <TextField
+                            id="salary"
+                            label="Salary"
+                            value={this.employee.salary}
+                            margin="normal"
+                            onChange={this.handleChange}
+                        />
+                        <br />
+                        <br />
+                        <Button type="submit" variant="contained" color="primary">Update</Button>
                     </form>
-                </div>
+                </div >
             )
         }
         else {
-            return <div> Error </div>
+            return (
+                <Typography variant="h6" color="inherit">
+                    Error
+                </Typography>
+            )
         }
     }
 }

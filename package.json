@@ -1,8 +1,9 @@
 {
-  "name": "marioplan",
+  "name": "employee-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.6.2",
     "firebase": "^5.3.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

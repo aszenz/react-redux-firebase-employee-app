@@ -7,7 +7,10 @@ export const createEmployee = employee => {
             createdAt: new Date(),
             updatedAt: new Date()
         }).then(() => {
-            dispatch({ type: 'CREATE_EMPLOYEE_SUCCESS' })
+            dispatch({
+                type: 'CREATE_EMPLOYEE_SUCCESS',
+                employee: employee
+            })
         }).catch((err) => {
             dispatch({ type: 'CREATE_EMPLOYEE_ERROR', err })
         })
@@ -19,7 +22,10 @@ export const deleteEmployee = empId => {
         const firestore = getFirestore()
         // TODO delete employee here
         firestore.collection('employees').doc(empId).delete().then(() => {
-            dispatch({ type: 'DELETE_EMPLOYEE_SUCCESS' })
+            dispatch({
+                type: 'DELETE_EMPLOYEE_SUCCESS',
+                empId: empId 
+            })
         }).catch((err) => {
             dispatch({ type: 'DELETE_EMPLOYEE_ERROR', err })
         })
@@ -34,7 +40,10 @@ export const updateEmployee = employee => {
             ...employee,
             updatedAt: new Date()
         }).then(() => {
-            dispatch({ type: 'UPDATE_EMPLOYEE_SUCCESS' })
+            dispatch({
+                type: 'UPDATE_EMPLOYEE_SUCCESS',
+                employee: employee 
+            })
         }).catch((err) => {
             dispatch({ type: 'UPDATE_EMPLOYEE_ERROR', err })
         })

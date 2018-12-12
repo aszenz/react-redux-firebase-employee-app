@@ -4,11 +4,10 @@ import EmployeesList from '../employees/EmployeesList'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 class Home extends Component {
-    update(){
-        
+    update() {
+
     }
     render() {
-        // console.log(this.props)
         const { employees } = this.props
         return (
             <div>
@@ -26,6 +25,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'employees' }
+        { collection: 'employees', orderBy: ['createdAt', 'desc'] }
     ])
 )(Home)

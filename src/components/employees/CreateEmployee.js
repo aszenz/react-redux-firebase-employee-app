@@ -3,6 +3,21 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
 import { createEmployee } from '../../store/actions/employeeActions'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+
+const styles = theme => ({
+    bt_create: {
+        margin: theme.spacing.unit,
+        padding: '10'
+    },
+    input: {
+        display: 'none',
+    },
+});
+
 class CreateEmployee extends Component {
     state = {
         name: '',
@@ -20,32 +35,54 @@ class CreateEmployee extends Component {
         // console.log(this.state)
         // TODO store state data in db
         this.props.createEmployee(this.state)
-        this.props.history.push('/')
+        // this.props.history.push({
+        // pathname: '/',
+        // state: this.state
+        // }
+        // )
     }
     render() {
         return (
             <div>
-                <h5>Create new employee</h5>
+                <br />
+                <Typography variant="h6" color="inherit">
+                    Create new employee
+                </Typography>
                 <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label htmlFor="name">Name</label>
-                        <input type="text" id="name" onChange={this.handleChange}></input>
-                    </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={this.handleChange}></input>
-                    </div>
-                    <div>
-                        <label htmlFor="department">Department</label>
-                        <input type="text" id="department" onChange={this.handleChange}></input>
-                    </div>
-                    <div>
-                        <label htmlFor="salary">Salary</label>
-                        <input type="number" id="salary" onChange={this.handleChange}></input>
-                    </div>
-                    <div>
-                        <button>Create</button>
-                    </div>
+                    <TextField
+                        id="name"
+                        label="Name"
+                        defaultValue=""
+                        margin="normal"
+                        onChange={this.handleChange}
+                    />
+                    <br />
+                    <TextField
+                        id="email"
+                        label="Email"
+                        defaultValue=""
+                        margin="normal"
+                        onChange={this.handleChange}
+                    />
+                    <br />
+                    <TextField
+                        id="department"
+                        label="Department"
+                        defaultValue=""
+                        margin="normal"
+                        onChange={this.handleChange}
+                    />
+                    <br />
+                    <TextField
+                        id="salary"
+                        label="Salary"
+                        defaultValue=""
+                        margin="normal"
+                        onChange={this.handleChange}
+                    />
+                    <br />
+                    <br />
+                    <Button type="submit" variant="contained" color="primary" className="bt_create">Create</Button>
                 </form>
             </div>
         )
@@ -57,6 +94,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 export default compose(
+    withStyles(styles),
     withRouter,
     connect(null, mapDispatchToProps)
 )(CreateEmployee)
