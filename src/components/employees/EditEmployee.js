@@ -21,7 +21,7 @@ class EditEmployee extends Component {
         console.log('current state on submit ', this.state)
         // TODO store state data in db
         this.props.updateEmployee(this.employee)
-        // this.props.history.push('/')
+        this.props.history.push('/')
     }
     render() {
         // console.log(this.props)

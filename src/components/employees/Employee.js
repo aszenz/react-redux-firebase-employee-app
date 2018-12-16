@@ -43,11 +43,11 @@ class Employee extends Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button type="submit" size="small" component={Link} to={'/employee/' + emp_details.id} color="inherit">
+                        <Button type="submit" size="small" component={Link} to={'/employee/' + emp_details.id} color="primary">
                             Edit
                         </Button>
                         <form onSubmit={this.handleSubmit}>
-                            <Button type="submit" size="small" color="inherit">
+                            <Button type="submit" size="small" color="secondary">
                                 Delete
                             </Button>
                         </form>

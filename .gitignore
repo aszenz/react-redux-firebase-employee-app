@@ -1,6 +1,6 @@
 # Logs
 
-
+.vscode
 build
 logs
 *.log

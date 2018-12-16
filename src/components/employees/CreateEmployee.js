@@ -35,11 +35,9 @@ class CreateEmployee extends Component {
         // console.log(this.state)
         // TODO store state data in db
         this.props.createEmployee(this.state)
-        // this.props.history.push({
-        // pathname: '/',
-        // state: this.state
-        // }
-        // )
+        this.props.history.push({
+        pathname: '/',
+        })
     }
     render() {
         return (
